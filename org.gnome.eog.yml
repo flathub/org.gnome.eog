@@ -39,8 +39,8 @@ modules:
     config-opts: [--disable-debug-tools, --disable-udev]
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/3.30/gnome-desktop-3.30.1.tar.xz
-        sha256: 1383703bedd71204e4a161fb163905410c8f651890f18b3fa8405506ba97789f
+        url: https://download.gnome.org/sources/gnome-desktop/3.30/gnome-desktop-3.30.2.tar.xz
+        sha256: 5475e693cb7ada801a36e8d16bc0dbb58930b793f455419b205cd9241d63d14c
 
   - name: libpeas
     cleanup: [/bin/*, /lib/peas-demo]
@@ -76,8 +76,8 @@ modules:
     cleanup: [ /share, /bin ]
     sources:
       - type: archive
-        url: https://github.com/webmproject/libwebp/archive/v1.0.0.tar.gz
-        sha256: c5c5ebf979543ac1f3348df8f6245262abd787a147b9632c880d92bfc38dbbeb
+        url: https://github.com/webmproject/libwebp/archive/v1.0.1.tar.gz
+        sha256: c2838544d4898a4bbb6c1d113e0aa50c4bdfc886df0dcfbfa5c42e788cb6f382
 
   - name: webp-pixbuf-loader
     buildsystem: cmake-ninja
@@ -93,8 +93,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/3.28/eog-3.28.3.tar.xz
-        sha256: 37aeddfbf440751fce23bfae491184e3b5c618ebf9d56f491bac37896ada48d2
+        url: https://download.gnome.org/sources/eog/3.28/eog-3.28.4.tar.xz
+        sha256: a55ca3bd077a3dd7682b6c636538266185e52d1419efc02c04d874f0071d38f3
 
   - name: eog-plugins
     sources:
