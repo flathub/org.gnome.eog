@@ -1,13 +1,11 @@
 app-id: org.gnome.eog
 runtime: org.gnome.Platform
-runtime-version: '3.30'
+runtime-version: '3.32'
 sdk: org.gnome.Sdk
 branch: stable
 command: eog
 rename-desktop-file: eog.desktop
 rename-appdata-file: eog.appdata.xml
-rename-icon: eog
-copy-icon: true
 finish-args:
   # X11 + XShm access
   - --share=ipc
@@ -36,11 +34,11 @@ cleanup:
   - '*.a'
 modules:
   - name: gnome-desktop
-    config-opts: [--disable-debug-tools, --disable-udev]
+    buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/3.30/gnome-desktop-3.30.2.tar.xz
-        sha256: 5475e693cb7ada801a36e8d16bc0dbb58930b793f455419b205cd9241d63d14c
+        url: https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.0.tar.xz
+        sha256: a6393dc5fc29fc0652ac84c73b3da205d0b0168128c4cf6d27797a08f3d07b54 
 
   - name: libpeas
     cleanup: [/bin/*, /lib/peas-demo]
@@ -54,8 +52,8 @@ modules:
     rm-configure: true
     sources:
       - type: archive
-        url: https://libopenraw.freedesktop.org/download/exempi-2.4.5.tar.bz2
-        sha256: 406185feb88e84ea1d4b4251370be2991205790d7113a7e28e192ff46a4f221e
+        url: https://libopenraw.freedesktop.org/download/exempi-2.5.0.tar.bz2
+        sha256: dc82fc24c0540a44a63fa4ad21775d24e00e63f1dedd3e2ae6f7aa27583b711b
 
       - type: script
         commands:
@@ -64,20 +62,22 @@ modules:
       - name: boost
         buildsystem: simple
         build-commands:
-          - ./bootstrap.sh --prefix=/app
-          - ./b2 install --with-system --with-thread --with-test --prefix=$FLATPAK_DEST -j $FLATPAK_BUILDER_N_JOBS
+          - ./bootstrap.sh --prefix=/app --with-libraries=test
+          - ./b2 -j ${FLATPAK_BUILDER_N_JOBS} headers
+          - ./b2 install
+        cleanup: ["*"]
         sources:
           - type: archive
-            url: https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2
-            sha256: 7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7
+            url: https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.bz2
+            sha256: 8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406
 
   - name: libwebp
     config-opts: [ --disable-static, --enable-libwebpmux, --enable-libwebpdemux ]
     cleanup: [ /share, /bin ]
     sources:
       - type: archive
-        url: https://github.com/webmproject/libwebp/archive/v1.0.1.tar.gz
-        sha256: c2838544d4898a4bbb6c1d113e0aa50c4bdfc886df0dcfbfa5c42e788cb6f382
+        url: https://github.com/webmproject/libwebp/archive/v1.0.2.tar.gz
+        sha256: 347cf85ddc3497832b5fa9eee62164a37b249c83adae0ba583093e039bf4881f
 
   - name: webp-pixbuf-loader
     buildsystem: cmake-ninja
@@ -93,8 +93,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/3.28/eog-3.28.4.tar.xz
-        sha256: a55ca3bd077a3dd7682b6c636538266185e52d1419efc02c04d874f0071d38f3
+        url: https://download.gnome.org/sources/eog/3.32/eog-3.32.0.tar.xz
+        sha256: ff0430e7baf88cd6dc7eb4ccd0f38d3ef4557db9be19c513f70109120196ac00
 
   - name: eog-plugins
     sources:
