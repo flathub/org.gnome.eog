@@ -1,6 +1,6 @@
 app-id: org.gnome.eog
 runtime: org.gnome.Platform
-runtime-version: '3.36'
+runtime-version: '3.38'
 sdk: org.gnome.Sdk
 command: eog
 rename-appdata-file: eog.appdata.xml
@@ -29,20 +29,28 @@ cleanup:
   - '*.la'
   - '*.a'
 modules:
+  - name: libportal
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/flatpak/libportal.git
+        tag: "0.3"
+        commit: 7b11b2a42fd4e7681bd38f3986b47108c0a3cc66
+
   - name: gnome-desktop
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/3.36/gnome-desktop-3.36.2.tar.xz
-        sha256: 38f994dcb1e1ae093d1c929c7acc4f88e39111e43b5fdc13125b0f6e2311c789
+        url: https://download.gnome.org/sources/gnome-desktop/3.38/gnome-desktop-3.38.0.tar.xz
+        sha256: 089dbbe3c66fe5575659a4a385d5d4bbd99cf637034df317f21cf586b5dd6b90
 
   - name: libpeas
     buildsystem: meson
     cleanup: [/bin/*, /lib/peas-demo]
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/libpeas/1.26/libpeas-1.26.0.tar.xz
-        sha256: a976d77e20496479a8e955e6a38fb0e5c5de89cf64d9f44e75c2213ee14f7376
+        url: https://download.gnome.org/sources/libpeas/1.28/libpeas-1.28.0.tar.xz
+        sha256: 42d91993b46ed50f16add6d9577ecc22beb8e2dffa7101e2232c2b63733b8b15
 
   - name: exempi
     cleanup: [ /bin ]
@@ -51,8 +59,8 @@ modules:
       - --disable-unittest
     sources:
       - type: archive
-        url: https://libopenraw.freedesktop.org/download/exempi-2.5.1.tar.bz2
-        sha256: 100b3d5b1b3370bc2e31c0978991716c4a4478246a2ac2df6382054a0ae89bc8
+        url: https://libopenraw.freedesktop.org/download/exempi-2.5.2.tar.bz2
+        sha256: 52f54314aefd45945d47a6ecf4bd21f362e6467fa5d0538b0d45a06bc6eaaed5
 
       - type: script
         commands:
@@ -81,8 +89,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/3.36/eog-3.36.2.tar.xz
-        sha256: 5c056b0295a8e06d093b8fc60b10e2a8c19abdb7beae1c7e7e0595ece2e1b78c
+        url: https://download.gnome.org/sources/eog/3.38/eog-3.38.0.tar.xz
+        sha256: e1a3a47c38688cd538deda627c0eff113d05c316b1dde6243150437259d2d963
 
   - name: eog-plugins
     sources:
