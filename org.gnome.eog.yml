@@ -83,7 +83,7 @@ modules:
   - name: webp-pixbuf-loader
     buildsystem: meson
     config-opts:
-      - -Dgdk_pixbuf_moduledir=/app/lib/
+      - -Dgdk_pixbuf_moduledir=/app/lib/gdk-pixbuf-2.0/2.10.0/loaders/
     sources:
       - type: git
         url: https://github.com/aruiz/webp-pixbuf-loader.git
