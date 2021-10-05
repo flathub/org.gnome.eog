@@ -38,8 +38,14 @@ modules:
     sources:
       - type: git
         url: https://github.com/flatpak/libportal.git
-        tag: "0.4"
+        tag: '0.4'
         commit: f68764e288ede516d902b131cc4fadded3804059
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/flatpak/libportal/releases/latest
+          tag-query: .tag_name
+          version-query: $tag
+          timestamp-query: .published_at
 
   - name: gnome-desktop
     buildsystem: meson
@@ -47,8 +53,11 @@ modules:
       - -Ddesktop_docs=false
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/40/gnome-desktop-40.4.tar.xz
-        sha256: 88ae96f585e0d0870941bba3d75ddf3ec40348e1c5ae741321ca482fac9d45ef
+        url: https://download.gnome.org/sources/gnome-desktop/41/gnome-desktop-41.0.tar.xz
+        sha256: 69cb1d3d9a10700eb66348ef1c0e66a855fc5a97ae62902df97a499da11562d2
+        x-checker-data:
+          type: gnome
+          name: gnome-desktop
 
   - name: libpeas
     buildsystem: meson
@@ -60,9 +69,12 @@ modules:
       - type: archive
         url: https://download.gnome.org/sources/libpeas/1.30/libpeas-1.30.0.tar.xz
         sha256: 0bf5562e9bfc0382a9dcb81f64340787542568762a3a367d9d90f6185898b9a3
+        x-checker-data:
+          type: gnome
+          name: libpeas
 
   - name: exempi
-    cleanup: [ /bin ]
+    cleanup: [/bin]
     rm-configure: true
     config-opts:
       - --disable-unittest
@@ -70,18 +82,25 @@ modules:
       - type: archive
         url: https://libopenraw.freedesktop.org/download/exempi-2.5.2.tar.bz2
         sha256: 52f54314aefd45945d47a6ecf4bd21f362e6467fa5d0538b0d45a06bc6eaaed5
-
+        x-checker-data:
+          type: anitya
+          project-id: 767
+          url-template: https://libopenraw.freedesktop.org/download/exempi-$version.tar.bz2
       - type: script
         commands:
           - autoreconf -vfi
 
   - name: libwebp
-    config-opts: [ --disable-static, --enable-libwebpmux, --enable-libwebpdemux ]
-    cleanup: [ /share, /bin ]
+    config-opts: [--disable-static, --enable-libwebpmux, --enable-libwebpdemux]
+    cleanup: [/share, /bin]
     sources:
       - type: archive
         url: https://github.com/webmproject/libwebp/archive/refs/tags/v1.2.1.tar.gz
         sha256: 01bcde6a40a602294994050b81df379d71c40b7e39c819c024d079b3c56307f4
+        x-checker-data:
+          type: anitya
+          project-id: 1761
+          url-template: https://github.com/webmproject/libwebp/archive/refs/tags/v$version.tar.gz
 
   - name: webp-pixbuf-loader
     buildsystem: meson
@@ -92,6 +111,12 @@ modules:
         url: https://github.com/aruiz/webp-pixbuf-loader.git
         tag: 0.0.3
         commit: ffddc060497ee11d6cc573dae01a528b357b91ec
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/aruiz/webp-pixbuf-loader/releases/latest
+          tag-query: .tag_name
+          version-query: $tag
+          timestamp-query: .published_at
 
   - name: libheif
     buildsystem: cmake-ninja
@@ -99,9 +124,16 @@ modules:
       - type: archive
         url: https://github.com/strukturag/libheif/releases/download/v1.12.0/libheif-1.12.0.tar.gz
         sha256: e1ac2abb354fdc8ccdca71363ebad7503ad731c84022cf460837f0839e171718
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/strukturag/libheif/releases/latest
+          version-query: .tag_name | sub("^v"; "")
+          url-query: .assets | map(select(.name=="libheif-\($version).tar.gz")) |
+            first | .browser_download_url
       - type: shell
         commands:
-          - sed -i 's|DESTINATION ${GDKPIXBUF2_MODULE_DIR}|DESTINATION /app/lib/gdk-pixbuf-2.0/2.10.0/loaders|' gdk-pixbuf/CMakeLists.txt
+          - sed -i 's|DESTINATION ${GDKPIXBUF2_MODULE_DIR}|DESTINATION /app/lib/gdk-pixbuf-2.0/2.10.0/loaders|'
+            gdk-pixbuf/CMakeLists.txt
     modules:
 
       - name: libde265
@@ -115,22 +147,36 @@ modules:
           - type: archive
             url: https://github.com/strukturag/libde265/releases/download/v1.0.8/libde265-1.0.8.tar.gz
             sha256: 24c791dd334fa521762320ff54f0febfd3c09fc978880a8c5fbc40a88f21d905
+            x-checker-data:
+              type: json
+              url: https://api.github.com/repos/strukturag/libde265/releases/latest
+              version-query: .tag_name | sub("^v"; "")
+              url-query: .assets | map(select(.name=="libde265-\($version).tar.gz"))
+                | first | .browser_download_url
 
   - name: update-pixbuf-loaders # libheif and webp-pixbuf-loader install modules
     buildsystem: simple
     build-commands:
-      - GDK_PIXBUF_MODULEDIR=/app/lib/gdk-pixbuf-2.0/2.10.0/loaders/ gdk-pixbuf-query-loaders > /app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
+      - GDK_PIXBUF_MODULEDIR=/app/lib/gdk-pixbuf-2.0/2.10.0/loaders/ gdk-pixbuf-query-loaders
+        > /app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
       - gdk-pixbuf-query-loaders >> /app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
 
   - name: eog
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/40/eog-40.3.tar.xz
-        sha256: 28aa3b07081d95657546f70894947fa886631a2c7f955e56cf80db731ae3b235
+        url: https://download.gnome.org/sources/eog/41/eog-41.0.tar.xz
+        sha256: 917de086fd97fd3ec930fa07c88badd2be1f5d0ae6b9e569c986004e0359a9ac
+        x-checker-data:
+          type: gnome
+          name: eog
+
 
   - name: eog-plugins
     sources:
       - type: archive
         url: https://download.gnome.org/sources/eog-plugins/3.26/eog-plugins-3.26.7.tar.xz
         sha256: 2ce6c19e29eb723e2362a8b0d9c396e686d065e17acfc584cc8c2b0949a17b3d
+        x-checker-data:
+          type: gnome
+          name: eog-plugins
