@@ -36,9 +36,9 @@ modules:
   - name: libportal
     buildsystem: meson
     config-opts:
-      - '-Dbackends=gtk3'
-      - '-Dintrospection=false'
-      - '-Ddocs=false'
+      - -Dbackends=gtk3
+      - -Dintrospection=false
+      - -Ddocs=false
     sources:
       - type: git
         url: https://github.com/flatpak/libportal.git
@@ -99,8 +99,8 @@ modules:
     cleanup: [/share, /bin]
     sources:
       - type: archive
-        url: https://github.com/webmproject/libwebp/archive/refs/tags/v1.2.1.tar.gz
-        sha256: 01bcde6a40a602294994050b81df379d71c40b7e39c819c024d079b3c56307f4
+        url: https://github.com/webmproject/libwebp/archive/refs/tags/v1.2.2-rc1.tar.gz
+        sha256: 5a275d48d15d809e9feab5ee14c80a87cb515c40c6ae2aace511e51fc772c068
         x-checker-data:
           type: anitya
           project-id: 1761
@@ -175,13 +175,13 @@ modules:
           type: gnome
           name: eog
       - type: patch
-        path: '0001-Update-libportal-usage.patch'
+        path: 0001-Update-libportal-usage.patch
 
   - name: eog-plugins
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog-plugins/3.26/eog-plugins-3.26.7.tar.xz
-        sha256: 2ce6c19e29eb723e2362a8b0d9c396e686d065e17acfc584cc8c2b0949a17b3d
+        url: https://download.gnome.org/sources/eog-plugins/3.26/eog-plugins-3.26.8.tar.xz
+        sha256: 80709f435232375f71f4b5d74267597a16b0922b271d1c81e522817eae6c9db5
         x-checker-data:
           type: gnome
           name: eog-plugins
