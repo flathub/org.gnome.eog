@@ -99,8 +99,8 @@ modules:
     cleanup: [/share, /bin]
     sources:
       - type: archive
-        url: https://github.com/webmproject/libwebp/archive/refs/tags/v1.2.2-rc1.tar.gz
-        sha256: 5a275d48d15d809e9feab5ee14c80a87cb515c40c6ae2aace511e51fc772c068
+        url: https://github.com/webmproject/libwebp/archive/refs/tags/v1.2.2.tar.gz
+        sha256: 51e9297aadb7d9eb99129fe0050f53a11fcce38a0848fb2b0389e385ad93695e
         x-checker-data:
           type: anitya
           project-id: 1761
