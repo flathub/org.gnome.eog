@@ -41,8 +41,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/flatpak/libportal.git
-        tag: '0.6'
-        commit: 13df0b887a7eb7b0f9b14069561a41f62e813155
+        tag: '0.5'
+        commit: 467a397fd7996557f837cdc26ac07c01c62810e5
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flatpak/libportal/releases/latest
