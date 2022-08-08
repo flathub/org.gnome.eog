@@ -56,8 +56,8 @@ modules:
       - -Ddesktop_docs=false
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/42/gnome-desktop-42.3.tar.xz
-        sha256: da50410b8f19fd7e775b00d1fe0dba67fc5e1151ded299158dc25ddadc3fa8a9
+        url: https://download.gnome.org/sources/gnome-desktop/42/gnome-desktop-42.4.tar.xz
+        sha256: 1ce2c9d5067969dbe0b282ea5a9acfb8698751f03cd07e2c730240f85dc9ad25
         x-checker-data:
           type: gnome
           name: gnome-desktop
@@ -98,8 +98,8 @@ modules:
     cleanup: [/share, /bin]
     sources:
       - type: archive
-        url: https://github.com/webmproject/libwebp/archive/refs/tags/v1.2.3.tar.gz
-        sha256: 021169407825d7ad918ff4554c6af885e7cf116d9b641cfd7f04c1173ffb9eb0
+        url: https://github.com/webmproject/libwebp/archive/refs/tags/v1.2.4.tar.gz
+        sha256: dfe7bff3390cd4958da11e760b65318f0a48c32913e4d5bc5e8d55abaaa2d32e
         x-checker-data:
           type: anitya
           project-id: 1761
