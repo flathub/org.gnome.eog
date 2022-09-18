@@ -56,8 +56,8 @@ modules:
       - -Ddesktop_docs=false
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/42/gnome-desktop-42.4.tar.xz
-        sha256: 1ce2c9d5067969dbe0b282ea5a9acfb8698751f03cd07e2c730240f85dc9ad25
+        url: https://download.gnome.org/sources/gnome-desktop/43/gnome-desktop-43.tar.xz
+        sha256: 3d6e153317486157596aa3802f87676414c570738f450a94a041fe8835420a69
         x-checker-data:
           type: gnome
           name: gnome-desktop
@@ -70,8 +70,8 @@ modules:
     cleanup: [/lib/peas-demo]
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/libpeas/1.32/libpeas-1.32.0.tar.xz
-        sha256: d625520fa02e8977029b246ae439bc218968965f1e82d612208b713f1dcc3d0e
+        url: https://download.gnome.org/sources/libpeas/1.34/libpeas-1.34.0.tar.xz
+        sha256: 4305f715dab4b5ad3e8007daec316625e7065a94e63e25ef55eb1efb964a7bf0
         x-checker-data:
           type: gnome
           name: libpeas
@@ -168,8 +168,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/42/eog-42.3.tar.xz
-        sha256: 30c1b3c28bc6dc2854d878ebd31a22eaa15bf959c134206a2a1904193e47f43a
+        url: https://download.gnome.org/sources/eog/43/eog-43.0.tar.xz
+        sha256: a52a2f3eb1a3bb50038a3362902bc795163e1a986763ee82d20424e7ae84546f
         x-checker-data:
           type: gnome
           name: eog
@@ -181,8 +181,8 @@ modules:
       - -Dplugin_postasa=false
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog-plugins/42/eog-plugins-42.1.tar.xz
-        sha256: 8b7211ca145a57fd5a929afd07905de742fd150743aaa2f600d718e832ad3e5f
+        url: https://download.gnome.org/sources/eog-plugins/42/eog-plugins-42.2.tar.xz
+        sha256: 604c6b57c72a680a62837dd735223be6e7b79e47cf75c92af9d12048db72918b
         x-checker-data:
           type: gnome
           name: eog-plugins
