@@ -157,6 +157,17 @@ modules:
               url-query: .assets | map(select(.name=="libde265-\($version).tar.gz"))
                 | first | .browser_download_url
 
+  - name: jpeg-xl
+    buildsystem: cmake
+    config-opts:
+      - -DJPEGXL_ENABLE_PLUGINS=true
+    sources:
+      - type: git
+        url: https://github.com/libjxl/libjxl.git
+        tag: v0.7.0
+      - type: patch
+        path: patches/pixbuf-moduledir.patch
+
   - name: update-pixbuf-loaders # libheif and webp-pixbuf-loader install modules
     buildsystem: simple
     build-commands:
@@ -173,6 +184,8 @@ modules:
         x-checker-data:
           type: gnome
           name: eog
+      - type: patch
+        path: patches/eog-mime.patch
 
   - name: eog-plugins
     buildsystem: meson
