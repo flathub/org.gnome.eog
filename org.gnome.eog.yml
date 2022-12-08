@@ -105,6 +105,7 @@ modules:
           type: anitya
           project-id: 1761
           url-template: https://github.com/webmproject/libwebp/archive/refs/tags/v$version.tar.gz
+          is-important: true
 
   - name: webp-pixbuf-loader
     buildsystem: meson
@@ -136,6 +137,7 @@ modules:
           version-query: .tag_name | sub("^v"; "")
           url-query: .assets | map(select(.name=="libheif-\($version).tar.gz")) |
             first | .browser_download_url
+          is-important: true
       - type: shell
         commands:
           - sed -i 's|DESTINATION ${GDKPIXBUF2_MODULE_DIR}|DESTINATION /app/lib/gdk-pixbuf-2.0/2.10.0/loaders|'
@@ -160,6 +162,7 @@ modules:
               version-query: .tag_name | sub("^v"; "")
               url-query: .assets | map(select(.name=="libde265-\($version).tar.gz"))
                 | first | .browser_download_url
+              is-important: true
 
   - name: jpeg-xl
     buildsystem: cmake-ninja
@@ -215,6 +218,7 @@ modules:
         x-checker-data:
           type: gnome
           name: eog
+          is-important: true
       - type: patch
         path: patches/eog-mime.patch
 
