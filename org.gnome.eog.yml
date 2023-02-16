@@ -56,8 +56,8 @@ modules:
       - -Ddesktop_docs=false
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/43/gnome-desktop-43.1.tar.xz
-        sha256: 32af8dbc3d9a7d583569a7f0d7f18f95818d5db9ee8f92d9123a647b15eac8c7
+        url: https://download.gnome.org/sources/gnome-desktop/43/gnome-desktop-43.2.tar.xz
+        sha256: a0b9ab20d28a63df6ce7e91eabb5e3af86630bf522b5a8997c04971bd551d730
         x-checker-data:
           type: gnome
           name: gnome-desktop
@@ -136,8 +136,8 @@ modules:
       - -DWITH_RAV1E=OFF
     sources:
       - type: archive
-        url: https://github.com/strukturag/libheif/releases/download/v1.14.2/libheif-1.14.2.tar.gz
-        sha256: d016905e247d6952cd7ee4f9b90957350b6a6caa466bc76fdfe6eb302b6d088c
+        url: https://github.com/strukturag/libheif/releases/download/v1.15.0/libheif-1.15.0.tar.gz
+        sha256: 434d5672ff1576b033bf313ce8505c7d2561f9e66afc4434c5bf380273546351
         x-checker-data:
           type: json
           url: https://api.github.com/repos/strukturag/libheif/releases/latest
