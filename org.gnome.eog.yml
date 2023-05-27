@@ -220,8 +220,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/44/eog-44.1.tar.xz
-        sha256: e2c963f232fe5a1091dcc18bec25a730e91b02af6e466601efa55e500cd74cab
+        url: https://download.gnome.org/sources/eog/44/eog-44.2.tar.xz
+        sha256: 468f539f6b67ee46188170f244480cc311dd1efe4786fe1554bffe26a65c72c4
         x-checker-data:
           type: gnome
           name: eog
