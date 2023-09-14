@@ -41,8 +41,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/flatpak/libportal.git
-        tag: '0.6'
-        commit: 13df0b887a7eb7b0f9b14069561a41f62e813155
+        tag: 0.7.1
+        commit: e9ed3a50cdde321eaf42361212480a66eb94a57a
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flatpak/libportal/releases/latest
@@ -84,8 +84,8 @@ modules:
       - --disable-static
     sources:
       - type: archive
-        url: https://libopenraw.freedesktop.org/download/exempi-2.6.3.tar.bz2
-        sha256: b0749db18a9e78cf771737954a838cdcdb1d5415888bac1ba9caf8cba77c656c
+        url: https://libopenraw.freedesktop.org/download/exempi-2.6.4.tar.bz2
+        sha256: a75149c96b61e39cdcb046fd5e56d88cfeeab6e08f894e15ebffd9944092bfd0
         x-checker-data:
           type: anitya
           project-id: 767
@@ -222,8 +222,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/44/eog-44.2.tar.xz
-        sha256: 468f539f6b67ee46188170f244480cc311dd1efe4786fe1554bffe26a65c72c4
+        url: https://download.gnome.org/sources/eog/44/eog-44.3.tar.xz
+        sha256: d6b2d70f4b432ff8cf494c8f9029b2621d08e7817938317d64063ae6c4da9d8c
         x-checker-data:
           type: gnome
           name: eog
