@@ -71,8 +71,8 @@ modules:
     cleanup: [/lib/peas-demo]
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/libpeas/1.36/libpeas-1.36.0.tar.xz
-        sha256: 297cb9c2cccd8e8617623d1a3e8415b4530b8e5a893e3527bbfd1edd13237b4c
+        url: https://download.gnome.org/sources/libpeas/2.0/libpeas-2.0.0.tar.xz
+        sha256: 5407acbc0c12f790f70c9d2b98224acc1be3ac449c60603b8192ca020b497011
         x-checker-data:
           type: gnome
           name: libpeas
@@ -208,8 +208,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/44/eog-44.3.tar.xz
-        sha256: d6b2d70f4b432ff8cf494c8f9029b2621d08e7817938317d64063ae6c4da9d8c
+        url: https://download.gnome.org/sources/eog/45/eog-45.0.tar.xz
+        sha256: 05cb2c9a66ba15870f47358cd4c1ce670f17e4c8b22e050d627d728ff88b57ba
         x-checker-data:
           type: gnome
           name: eog
