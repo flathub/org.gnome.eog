@@ -71,8 +71,8 @@ modules:
     cleanup: [/lib/peas-demo]
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/libpeas/1.36/libpeas-1.36.0.tar.xz
-        sha256: 297cb9c2cccd8e8617623d1a3e8415b4530b8e5a893e3527bbfd1edd13237b4c
+        url: https://download.gnome.org/sources/libpeas/2.0/libpeas-2.0.0.tar.xz
+        sha256: 5407acbc0c12f790f70c9d2b98224acc1be3ac449c60603b8192ca020b497011
         x-checker-data:
           type: gnome
           name: libpeas
@@ -124,8 +124,8 @@ modules:
       - -DWITH_RAV1E=OFF
     sources:
       - type: archive
-        url: https://github.com/strukturag/libheif/releases/download/v1.16.2/libheif-1.16.2.tar.gz
-        sha256: 7f97e4205c0bd9f9b8560536c8bd2e841d1c9a6d610401eb3eb87ed9cdfe78ea
+        url: https://github.com/strukturag/libheif/releases/download/v1.17.1/libheif-1.17.1.tar.gz
+        sha256: 97d74c58a346887c1bbf98dcf0322c13b728286153d0f1be2b350f7107e49dba
         x-checker-data:
           type: json
           url: https://api.github.com/repos/strukturag/libheif/releases/latest
@@ -208,8 +208,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/44/eog-44.3.tar.xz
-        sha256: d6b2d70f4b432ff8cf494c8f9029b2621d08e7817938317d64063ae6c4da9d8c
+        url: https://download.gnome.org/sources/eog/45/eog-45.0.tar.xz
+        sha256: 05cb2c9a66ba15870f47358cd4c1ce670f17e4c8b22e050d627d728ff88b57ba
         x-checker-data:
           type: gnome
           name: eog
