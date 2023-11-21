@@ -76,6 +76,8 @@ modules:
         x-checker-data:
           type: gnome
           name: libpeas
+          versions:
+            '<': '1.99.0'
 
   - name: exempi
     cleanup: [/bin]
