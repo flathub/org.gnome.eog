@@ -77,7 +77,7 @@ modules:
           type: gnome
           name: libpeas
           versions:
-            '<': '1.99.0'
+            <: 1.99.0
 
   - name: exempi
     cleanup: [/bin]
@@ -126,8 +126,8 @@ modules:
       - -DWITH_RAV1E=OFF
     sources:
       - type: archive
-        url: https://github.com/strukturag/libheif/releases/download/v1.17.3/libheif-1.17.3.tar.gz
-        sha256: 8d5b6292e7931324f81f871f250ecbb9f874aa3c66b4f6f35ceb0bf3163b53ea
+        url: https://github.com/strukturag/libheif/releases/download/v1.17.5/libheif-1.17.5.tar.gz
+        sha256: 38ab01938ef419dbebb98346dc0b1c8bb503a0449ea61a0e409a988786c2af5b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/strukturag/libheif/releases/latest
@@ -151,8 +151,8 @@ modules:
           - --disable-static
         sources:
           - type: archive
-            url: https://github.com/strukturag/libde265/releases/download/v1.0.12/libde265-1.0.12.tar.gz
-            sha256: 62185ea2182e68cf68bba20cc6eb4c287407b509cf0a827d7ddb75614db77b5c
+            url: https://github.com/strukturag/libde265/releases/download/v1.0.14/libde265-1.0.14.tar.gz
+            sha256: 99f46ef77a438be639aa3c5d9632c0670541c5ed5d386524d4199da2d30df28f
             x-checker-data:
               type: json
               url: https://api.github.com/repos/strukturag/libde265/releases/latest
@@ -210,8 +210,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/44/eog-44.3.tar.xz
-        sha256: d6b2d70f4b432ff8cf494c8f9029b2621d08e7817938317d64063ae6c4da9d8c
+        url: https://download.gnome.org/sources/eog/45/eog-45.1.tar.xz
+        sha256: c17f86704c722b36c01a168f1e51439be0bb279f2c6646f48b66e9d0f3a24cd2
         x-checker-data:
           type: gnome
           name: eog
