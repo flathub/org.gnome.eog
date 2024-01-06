@@ -87,8 +87,8 @@ modules:
       - --disable-static
     sources:
       - type: archive
-        url: https://libopenraw.freedesktop.org/download/exempi-2.6.4.tar.bz2
-        sha256: a75149c96b61e39cdcb046fd5e56d88cfeeab6e08f894e15ebffd9944092bfd0
+        url: https://libopenraw.freedesktop.org/download/exempi-2.6.5.tar.bz2
+        sha256: e9f9a3d42bff73b5eb0f77ec22cd0163c3e21949cc414ad1f19a0465dde41ffe
         x-checker-data:
           type: anitya
           project-id: 767
@@ -210,8 +210,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/45/eog-45.1.tar.xz
-        sha256: c17f86704c722b36c01a168f1e51439be0bb279f2c6646f48b66e9d0f3a24cd2
+        url: https://download.gnome.org/sources/eog/45/eog-45.2.tar.xz
+        sha256: d94cc39d82c80cee7281b82ace42c8225976ad5d0c3ef995c7e030f6bab2219c
         x-checker-data:
           type: gnome
           name: eog
