@@ -157,8 +157,7 @@ modules:
               type: json
               url: https://api.github.com/repos/strukturag/libde265/releases/latest
               version-query: .tag_name | sub("^v"; "")
-              url-query: .assets | map(select(.name=="libde265-\($version).tar.gz"))
-                | first | .browser_download_url
+              url-query: .assets | map(select(.name=="libde265-\($version).tar.gz")) | first | .browser_download_url
               is-important: true
 
   - name: jpeg-xl
@@ -202,8 +201,7 @@ modules:
   - name: update-pixbuf-loaders # libheif, jpegxl, and webp-pixbuf-loader install modules
     buildsystem: simple
     build-commands:
-      - GDK_PIXBUF_MODULEDIR=/app/lib/gdk-pixbuf-2.0/2.10.0/loaders/ gdk-pixbuf-query-loaders
-        > /app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
+      - GDK_PIXBUF_MODULEDIR=/app/lib/gdk-pixbuf-2.0/2.10.0/loaders/ gdk-pixbuf-query-loaders > /app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
       - gdk-pixbuf-query-loaders >> /app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
 
   - name: eog
