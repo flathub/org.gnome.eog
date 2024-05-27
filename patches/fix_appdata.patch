@@ -1,0 +1,15 @@
+diff --git a/data/eog.appdata.xml.in b/data/eog.appdata.xml.in
+index 6c3b620..2acba5c 100644
+--- a/data/eog.appdata.xml.in
++++ b/data/eog.appdata.xml.in
+@@ -70,6 +70,7 @@
+     <release version="3.36.1" date="2020-04-09" />
+   </releases>
+   <project_group>GNOME</project_group>
++  <developer_name>The GNOME Project</developer_name>
+   <translation type="gettext">eog</translation>
+   <launchable type="desktop-id">org.gnome.eog.desktop</launchable>
+   <content_rating type="oars-1.1" />
+--
+libgit2 1.7.2
+
