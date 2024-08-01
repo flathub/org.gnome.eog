@@ -212,8 +212,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/45/eog-45.3.tar.xz
-        sha256: 8650f662d4921d83a7904f6bb9ca245baf735f717b47fac5b37f0d90e5e891a8
+        url: https://download.gnome.org/sources/eog/45/eog-45.4.tar.xz
+        sha256: b50f321c70ac64af7bcaa5b4460dc675b3ca60fdad385616f3ac7b770e0666fe
         x-checker-data:
           type: gnome
           name: eog
@@ -230,8 +230,8 @@ modules:
       - -Dplugin_postasa=false
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog-plugins/44/eog-plugins-44.0.tar.xz
-        sha256: db31cbf7bb9652db0a87113e9b51f4df2586763a261b0cbf04327d82cb38b047
+        url: https://download.gnome.org/sources/eog-plugins/44/eog-plugins-44.1.tar.xz
+        sha256: c4c384155fabb34889d76b616065483f94c8310fa0147236d009c68cd4a85c93
         x-checker-data:
           type: gnome
           name: eog-plugins
