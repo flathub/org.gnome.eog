@@ -219,8 +219,6 @@ modules:
           name: eog
           is-important: true
       - type: patch
-        path: patches/eog-mime.patch
-      - type: patch
         path: patches/fix_appdata.patch
 
   - name: eog-plugins
