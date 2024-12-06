@@ -1,6 +1,6 @@
 id: org.gnome.eog
 runtime: org.gnome.Platform
-runtime-version: '46'
+runtime-version: '47'
 sdk: org.gnome.Sdk
 command: eog
 rename-appdata-file: eog.appdata.xml
