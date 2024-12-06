@@ -1,6 +1,6 @@
 id: org.gnome.eog
 runtime: org.gnome.Platform
-runtime-version: '46'
+runtime-version: '47'
 sdk: org.gnome.Sdk
 command: eog
 rename-appdata-file: eog.appdata.xml
@@ -44,8 +44,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/flatpak/libportal.git
-        tag: 0.8.0
-        commit: 26c2576231db484638fc7773418dd42d6889fd1f
+        tag: 0.8.1
+        commit: 26c15008cbe579f57f89468384f8efc033f25f6f
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flatpak/libportal/releases/latest
@@ -212,14 +212,12 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/45/eog-45.4.tar.xz
-        sha256: b50f321c70ac64af7bcaa5b4460dc675b3ca60fdad385616f3ac7b770e0666fe
+        url: https://download.gnome.org/sources/eog/47/eog-47.0.tar.xz
+        sha256: db5edbf5224d75126a7b7d8ee4e9272a2f30a953331d5baf6d3f3c0ce0cbde66
         x-checker-data:
           type: gnome
           name: eog
           is-important: true
-      - type: patch
-        path: patches/eog-mime.patch
       - type: patch
         path: patches/fix_appdata.patch
 
