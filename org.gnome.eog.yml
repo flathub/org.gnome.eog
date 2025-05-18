@@ -89,8 +89,8 @@ modules:
       - --disable-static
     sources:
       - type: archive
-        url: https://libopenraw.freedesktop.org/download/exempi-2.6.5.tar.bz2
-        sha256: e9f9a3d42bff73b5eb0f77ec22cd0163c3e21949cc414ad1f19a0465dde41ffe
+        url: https://libopenraw.freedesktop.org/download/exempi-2.6.6.tar.bz2
+        sha256: 7513b7e42c3bd90a58d77d938c60d2e87c68f81646e7cb8b12d71fe334391c6f
         x-checker-data:
           type: anitya
           project-id: 767
@@ -128,8 +128,8 @@ modules:
       - -DWITH_RAV1E=OFF
     sources:
       - type: archive
-        url: https://github.com/strukturag/libheif/releases/download/v1.19.7/libheif-1.19.7.tar.gz
-        sha256: 161c042d2102665fcee3ded851c78a0eb5f2d4bfe39fba48ba6e588fd6e964f3
+        url: https://github.com/strukturag/libheif/releases/download/v1.19.8/libheif-1.19.8.tar.gz
+        sha256: 6c4a5b08e6eae66d199977468859dea3b5e059081db8928f7c7c16e53836c906
         x-checker-data:
           type: json
           url: https://api.github.com/repos/strukturag/libheif/releases/latest
@@ -153,8 +153,8 @@ modules:
           - --disable-static
         sources:
           - type: archive
-            url: https://github.com/strukturag/libde265/releases/download/v1.0.15/libde265-1.0.15.tar.gz
-            sha256: 00251986c29d34d3af7117ed05874950c875dd9292d016be29d3b3762666511d
+            url: https://github.com/strukturag/libde265/releases/download/v1.0.16/libde265-1.0.16.tar.gz
+            sha256: b92beb6b53c346db9a8fae968d686ab706240099cdd5aff87777362d668b0de7
             x-checker-data:
               type: json
               url: https://api.github.com/repos/strukturag/libde265/releases/latest
@@ -212,8 +212,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/45/eog-45.4.tar.xz
-        sha256: b50f321c70ac64af7bcaa5b4460dc675b3ca60fdad385616f3ac7b770e0666fe
+        url: https://download.gnome.org/sources/eog/47/eog-47.0.tar.xz
+        sha256: db5edbf5224d75126a7b7d8ee4e9272a2f30a953331d5baf6d3f3c0ce0cbde66
         x-checker-data:
           type: gnome
           name: eog
