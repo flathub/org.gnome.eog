@@ -1,9 +1,16 @@
 id: org.gnome.eog
 runtime: org.gnome.Platform
-runtime-version: '46'
+runtime-version: '48'
 sdk: org.gnome.Sdk
 command: eog
 rename-appdata-file: eog.appdata.xml
+add-extensions:
+  org.freedesktop.Platform.ffmpeg-full:
+    version: '24.08'
+    directory: lib/ffmpeg
+    add-ld-path: .
+cleanup-commands:
+  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 finish-args:
   # X11 + XShm access
   - --share=ipc
@@ -59,8 +66,8 @@ modules:
       - -Ddesktop_docs=false
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.1.tar.xz
-        sha256: ae7ca55dc9e08914999741523a17d29ce223915626bd2462a120bf96f47a79ab
+        url: https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.3.tar.xz
+        sha256: 40efa9aa8d50effed9227a3d70671e32e9dc35e20f331cab3b562975978f4f8d
         x-checker-data:
           type: gnome
           name: gnome-desktop
@@ -89,8 +96,8 @@ modules:
       - --disable-static
     sources:
       - type: archive
-        url: https://libopenraw.freedesktop.org/download/exempi-2.6.5.tar.bz2
-        sha256: e9f9a3d42bff73b5eb0f77ec22cd0163c3e21949cc414ad1f19a0465dde41ffe
+        url: https://libopenraw.freedesktop.org/download/exempi-2.6.6.tar.bz2
+        sha256: 7513b7e42c3bd90a58d77d938c60d2e87c68f81646e7cb8b12d71fe334391c6f
         x-checker-data:
           type: anitya
           project-id: 767
@@ -115,92 +122,6 @@ modules:
           version-query: $tag
           timestamp-query: .published_at
 
-  - name: libheif
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DWITH_EXAMPLES=OFF
-      # Workaround for regression in 1.14.0, fixed in 1.14.1
-      - -DENABLE_PLUGIN_LOADING=OFF
-      # Disable Encoders
-      - -DWITH_SvtEnc=OFF
-      - -DWITH_AOM_ENCODER=OFF
-      - -DWITH_X265=OFF
-      - -DWITH_RAV1E=OFF
-    sources:
-      - type: archive
-        url: https://github.com/strukturag/libheif/releases/download/v1.19.7/libheif-1.19.7.tar.gz
-        sha256: 161c042d2102665fcee3ded851c78a0eb5f2d4bfe39fba48ba6e588fd6e964f3
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/strukturag/libheif/releases/latest
-          version-query: .tag_name | sub("^v"; "")
-          url-query: .assets | map(select(.name=="libheif-\($version).tar.gz")) |
-            first | .browser_download_url
-          is-important: true
-      - type: shell
-        commands:
-          - sed -i 's|DESTINATION ${GDKPIXBUF2_MODULE_DIR}|DESTINATION /app/lib/gdk-pixbuf-2.0/2.10.0/loaders|'
-            gdk-pixbuf/CMakeLists.txt
-    modules:
-
-      - name: libde265
-        cleanup:
-          - /bin
-        config-opts:
-          - --disable-encoder
-          - --disable-sherlock265
-          - --disable-dec265
-          - --disable-static
-        sources:
-          - type: archive
-            url: https://github.com/strukturag/libde265/releases/download/v1.0.15/libde265-1.0.15.tar.gz
-            sha256: 00251986c29d34d3af7117ed05874950c875dd9292d016be29d3b3762666511d
-            x-checker-data:
-              type: json
-              url: https://api.github.com/repos/strukturag/libde265/releases/latest
-              version-query: .tag_name | sub("^v"; "")
-              url-query: .assets | map(select(.name=="libde265-\($version).tar.gz"))
-                | first | .browser_download_url
-              is-important: true
-
-  - name: jpeg-xl
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_BUILD_STATIC_LIBS=OFF
-      - -DJPEGXL_FORCE_SYSTEM_BROTLI=ON
-      - -DJPEGXL_FORCE_SYSTEM_LCMS2=ON
-      - -DJPEGXL_FORCE_SYSTEM_HWY=ON
-      - -DJPEGXL_ENABLE_PLUGINS=ON
-      - -DJPEGXL_ENABLE_TOOLS=OFF
-      - -DJPEGXL_ENABLE_EXAMPLES=OFF
-      - -DJPEGXL_ENABLE_MANPAGES=OFF
-      - -DJPEGXL_ENABLE_FUZZERS=OFF
-      - -DBUILD_TESTING=OFF
-    post-install:
-      # It doesn't respect disabling static libraries...
-      - rm $FLATPAK_DEST/lib/*.a
-    sources:
-      - type: git
-        url: https://github.com/libjxl/libjxl.git
-        commit: v0.7.0
-      - type: patch
-        path: patches/pixbuf-moduledir.patch
-    modules:
-
-      - name: hwy
-        buildsystem: cmake-ninja
-        config-opts:
-          - -DBUILD_SHARED_LIBS=ON
-          - -DHWY_ENABLE_TESTS=OFF
-          - -DHWY_ENABLE_EXAMPLES=OFF
-          - -DHWY_ENABLE_CONTRIB=OFF
-        post-install:
-          - rm $FLATPAK_DEST/lib/libhwy_test*
-        sources:
-          - type: archive
-            url: https://github.com/google/highway/archive/refs/tags/1.0.2.tar.gz
-            sha256: e8ef71236ac0d97f12d553ec1ffc5b6375d57b5f0b860c7447dd69b6ed1072db
-
   - name: update-pixbuf-loaders # libheif, jpegxl, and webp-pixbuf-loader install modules
     buildsystem: simple
     build-commands:
@@ -212,14 +133,12 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/45/eog-45.4.tar.xz
-        sha256: b50f321c70ac64af7bcaa5b4460dc675b3ca60fdad385616f3ac7b770e0666fe
+        url: https://download.gnome.org/sources/eog/47/eog-47.0.tar.xz
+        sha256: db5edbf5224d75126a7b7d8ee4e9272a2f30a953331d5baf6d3f3c0ce0cbde66
         x-checker-data:
           type: gnome
           name: eog
           is-important: true
-      - type: patch
-        path: patches/eog-mime.patch
       - type: patch
         path: patches/fix_appdata.patch
 
