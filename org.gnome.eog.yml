@@ -1,16 +1,9 @@
 id: org.gnome.eog
 runtime: org.gnome.Platform
-runtime-version: '48'
+runtime-version: '49'
 sdk: org.gnome.Sdk
 command: eog
 rename-appdata-file: eog.appdata.xml
-add-extensions:
-  org.freedesktop.Platform.ffmpeg-full:
-    version: '24.08'
-    directory: lib/ffmpeg
-    add-ld-path: .
-cleanup-commands:
-  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 finish-args:
   # X11 + XShm access
   - --share=ipc
@@ -24,8 +17,6 @@ finish-args:
   # GVFS access
   - --talk-name=org.gtk.vfs.*
   - --filesystem=xdg-run/gvfsd
-  # For webp pixbuf module
-  - --env=GDK_PIXBUF_MODULE_FILE=/app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
 cleanup:
   - /include
   - /lib/pkgconfig
@@ -105,29 +96,6 @@ modules:
       - type: script
         commands:
           - autoreconf -vfi
-
-  - name: webp-pixbuf-loader
-    buildsystem: meson
-    config-opts:
-      - -Dgdk_pixbuf_moduledir=/app/lib/gdk-pixbuf-2.0/2.10.0/loaders/
-    sources:
-      - type: git
-        url: https://github.com/aruiz/webp-pixbuf-loader.git
-        tag: 0.2.7
-        commit: 52232e4ba282b2fed68e8fcb4b5d45ed0eaa4ed3
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/aruiz/webp-pixbuf-loader/releases/latest
-          tag-query: .tag_name
-          version-query: $tag
-          timestamp-query: .published_at
-
-  - name: update-pixbuf-loaders # libheif, jpegxl, and webp-pixbuf-loader install modules
-    buildsystem: simple
-    build-commands:
-      - GDK_PIXBUF_MODULEDIR=/app/lib/gdk-pixbuf-2.0/2.10.0/loaders/ gdk-pixbuf-query-loaders
-        > /app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
-      - gdk-pixbuf-query-loaders >> /app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
 
   - name: eog
     buildsystem: meson
