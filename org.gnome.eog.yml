@@ -113,8 +113,13 @@ modules:
   - name: eog-plugins
     buildsystem: meson
     config-opts:
+      - -Dplugin_export-to-folder=false
+      - -Dplugin_fullscreenbg=false
       - -Dplugin_map=false
+      - -Dplugin_maximize-windows=false
       - -Dplugin_postasa=false
+      - -Dplugin_pythonconsole=false
+      - -Dplugin_slideshowshuffle=false
     sources:
       - type: archive
         url: https://download.gnome.org/sources/eog-plugins/44/eog-plugins-44.1.tar.xz
