@@ -64,8 +64,8 @@ modules:
       - -Ddesktop_docs=false
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.3.tar.xz
-        sha256: 40efa9aa8d50effed9227a3d70671e32e9dc35e20f331cab3b562975978f4f8d
+        url: https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.4.tar.xz
+        sha256: 1d8cb9c6a328eb689b0c1269cf53834cc84d851d7e71970cdabba82706b44984
         x-checker-data:
           type: gnome
           name: gnome-desktop
@@ -131,8 +131,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/47/eog-47.0.tar.xz
-        sha256: db5edbf5224d75126a7b7d8ee4e9272a2f30a953331d5baf6d3f3c0ce0cbde66
+        url: https://download.gnome.org/sources/eog/49/eog-49.1.tar.xz
+        sha256: fadd12e14ba9cd2be6989dfbcef40001645b63440ceed8e04867b07587b066dc
         x-checker-data:
           type: gnome
           name: eog
