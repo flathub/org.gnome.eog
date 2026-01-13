@@ -3,7 +3,6 @@ runtime: org.gnome.Platform
 runtime-version: '48'
 sdk: org.gnome.Sdk
 command: eog
-rename-appdata-file: eog.appdata.xml
 add-extensions:
   org.freedesktop.Platform.ffmpeg-full:
     version: '24.08'
@@ -138,7 +137,7 @@ modules:
           name: eog
           is-important: true
       - type: patch
-        path: patches/fix_appdata.patch
+        path: fix-appdata.patch
 
   - name: eog-plugins
     buildsystem: meson
