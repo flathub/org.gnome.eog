@@ -23,7 +23,3 @@ flatpak run org.gnome.eog
 git clone git@github.com:flathub/org.gnome.eog.git
 flatpak run org.flatpak.Builder build-dir --user --ccache --force-clean --install org.gnome.eog.yml
 ```
-
----
-
-**Technologies**: GNOME, GTK3, Libhandy, C
