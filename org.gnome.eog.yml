@@ -3,6 +3,7 @@ runtime: org.gnome.Platform
 runtime-version: '49'
 sdk: org.gnome.Sdk
 command: eog
+rename-appdata-file: org.gnome.eog.metainfo.xml
 finish-args:
   # X11 + XShm access
   - --share=ipc
@@ -104,8 +105,6 @@ modules:
           type: gnome
           name: eog
           is-important: true
-      - type: patch
-        path: fix-appdata.patch
 
   - name: eog-plugins
     buildsystem: meson
