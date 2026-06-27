@@ -41,8 +41,8 @@ modules:
       - -Ddocs=false
     sources:
       - type: archive
-        url: https://github.com/flatpak/libportal/archive/0.9.1.tar.gz
-        sha256: ea422b789ae487e04194d387bea031fd7485bf88a18aef8c767f7d1c29496a4e
+        url: https://github.com/flatpak/libportal/archive/0.10.0.tar.gz
+        sha256: e1b6913c6d9015bfa918ace86f82c30940982add97aed9c18cc929c5327054fd
         x-checker-data:
           type: anitya
           project-id: 230124
@@ -99,8 +99,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/50/eog-50.1.tar.xz
-        sha256: 6f5ee6d756548b88e25a987e0d06dabc3c6c32598fb7df49fb08945c1fe94a55
+        url: https://download.gnome.org/sources/eog/50/eog-50.2.tar.xz
+        sha256: c6c2afdfe40a838de0c6b264884a80d388f1c2efa3f73a15ede08824c46be0b3
         x-checker-data:
           type: gnome
           name: eog
