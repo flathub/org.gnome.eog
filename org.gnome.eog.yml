@@ -41,8 +41,8 @@ modules:
       - -Ddocs=false
     sources:
       - type: archive
-        url: https://github.com/flatpak/libportal/archive/0.10.0.tar.gz
-        sha256: e1b6913c6d9015bfa918ace86f82c30940982add97aed9c18cc929c5327054fd
+        url: https://github.com/flatpak/libportal/archive/0.11.0.tar.gz
+        sha256: 71482afa68b3373268e7df7feaf96ce99eb1a6701f60ff43a0d1b2594605eae8
         x-checker-data:
           type: anitya
           project-id: 230124
@@ -55,8 +55,8 @@ modules:
       - -Ddesktop_docs=false
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.5.tar.xz
-        sha256: 20e0995a6e3a03e8c1026c5a27bc3f45e69ffcc392ad743dcab6107a541d232f
+        url: https://download.gnome.org/sources/gnome-desktop/51/gnome-desktop-51.0.tar.xz
+        sha256: 9ebeb9f1769d3c310caeadd921ab34c8f264b92937740518b3bc859a579a6912
         x-checker-data:
           type: gnome
           name: gnome-desktop
@@ -99,8 +99,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/50/eog-50.2.tar.xz
-        sha256: c6c2afdfe40a838de0c6b264884a80d388f1c2efa3f73a15ede08824c46be0b3
+        url: https://download.gnome.org/sources/eog/50/eog-50.4.tar.xz
+        sha256: db9a11ebad2fb1e5199c529d0eab8e566bd2d5138585ac467e5f6752206486c9
         x-checker-data:
           type: gnome
           name: eog
