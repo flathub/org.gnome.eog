@@ -1,6 +1,6 @@
 id: org.gnome.eog
 runtime: org.gnome.Platform
-runtime-version: '50'
+runtime-version: '51'
 sdk: org.gnome.Sdk
 command: eog
 rename-appdata-file: org.gnome.eog.metainfo.xml
@@ -20,34 +20,26 @@ finish-args:
 cleanup:
   - /include
   - /lib/pkgconfig
-  - /lib/cmake
-  - /lib/girepository-1.0
   - /libexec
-  - /man
-  - /share/aclocal
   - /share/gir-1.0
-  - /share/gtk-doc
   - /share/man
-  - /share/pkgconfig
+  - /share/vala
   - '*.la'
   - '*.a'
 modules:
-  - name: libportal
+
+  # Required by the EOG. The runtime no longer provides this module.
+  - name: libhandy
     buildsystem: meson
     config-opts:
-      - -Dbackend-gtk3=enabled
-      - -Dbackend-gtk4=disabled
-      - -Dintrospection=false
-      - -Ddocs=false
+      - -Dglade_catalog=disabled
+      - -Dvapi=true
+      - -Dtests=false
+      - -Dexamples=false
     sources:
       - type: archive
-        url: https://github.com/flatpak/libportal/archive/0.10.0.tar.gz
-        sha256: e1b6913c6d9015bfa918ace86f82c30940982add97aed9c18cc929c5327054fd
-        x-checker-data:
-          type: anitya
-          project-id: 230124
-          stable-only: true
-          url-template: https://github.com/flatpak/libportal/archive/$version.tar.gz
+        url: https://download.gnome.org/sources/libhandy/1.8/libhandy-1.8.3.tar.xz
+        sha256: 05b497229073ff557f10b326e074c5066f8743a302d4820ab97bcb5cd2dab087
 
   - name: gnome-desktop
     buildsystem: meson
@@ -55,8 +47,8 @@ modules:
       - -Ddesktop_docs=false
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.5.tar.xz
-        sha256: 20e0995a6e3a03e8c1026c5a27bc3f45e69ffcc392ad743dcab6107a541d232f
+        url: https://download.gnome.org/sources/gnome-desktop/51/gnome-desktop-51.0.tar.xz
+        sha256: 9ebeb9f1769d3c310caeadd921ab34c8f264b92937740518b3bc859a579a6912
         x-checker-data:
           type: gnome
           name: gnome-desktop
@@ -99,8 +91,8 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/eog/50/eog-50.2.tar.xz
-        sha256: c6c2afdfe40a838de0c6b264884a80d388f1c2efa3f73a15ede08824c46be0b3
+        url: https://download.gnome.org/sources/eog/50/eog-50.4.tar.xz
+        sha256: db9a11ebad2fb1e5199c529d0eab8e566bd2d5138585ac467e5f6752206486c9
         x-checker-data:
           type: gnome
           name: eog
